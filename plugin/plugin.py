@@ -54,8 +54,8 @@ class PermanentVfdClockMenu(Screen, ConfigListScreen):
 	skin = """
 	<screen position="c-300,c-100" size="600,200" title="Permanent VFD clock config">
 		<widget name="config" position="25,25" size="e-50,e-50" />
-		<ePixmap pixmap="skin_default/buttons/red.png" position="20,e-45" size="140,40" alphatest="on" />
-		<ePixmap pixmap="skin_default/buttons/green.png" position="160,e-45" size="140,40" alphatest="on" />
+		<ePixmap pixmap="buttons/red.png" position="20,e-45" size="140,40" alphatest="on" />
+		<ePixmap pixmap="buttons/green.png" position="160,e-45" size="140,40" alphatest="on" />
 		<widget source="key_red" render="Label" position="20,e-45" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
 		<widget source="key_green" render="Label" position="160,e-45" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" />
 	</screen>"""
