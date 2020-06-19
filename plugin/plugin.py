@@ -12,6 +12,7 @@ config.plugins.PermanentVfdClock.enabled = ConfigBoolean(default = False)
 config.plugins.PermanentVfdClock.timeonly = ConfigBoolean(default = False)
 config.plugins.PermanentVfdClock.refreshrate = ConfigInteger(default = 15, limits = (1,60))
 config.plugins.PermanentVfdClock.holdofftime = ConfigInteger(default = 5, limits = (1,60))
+config.plugins.PermanentVfdClock.twodigits = ConfigBoolean(default = False)
 
 VFD_PATH = '/dev/dbox/oled0'
 
@@ -41,9 +42,15 @@ class PermanentVfdClock(Screen):
 				t = localtime()
 				vfd = open(VFD_PATH, "w")
 				if config.plugins.PermanentVfdClock.timeonly.value is True:
-					vfd.write("   %2d:%02d" % (t.tm_hour, t.tm_min))
+					if config.plugins.PermanentVfdClock.twodigits.value is True:
+						vfd.write("  %02d:%02d" % (t.tm_hour, t.tm_min))
+					else:
+						vfd.write("   %2d:%02d" % (t.tm_hour, t.tm_min))
 				else:
-					vfd.write("%2d:%02d %d/%d" % (t.tm_hour, t.tm_min, t[2], t[1]))
+					if config.plugins.PermanentVfdClock.twodigits.value is True:
+						vfd.write("%02d:%02d %d/%d" % (t.tm_hour, t.tm_min))
+					else:
+						vfd.write("%2d:%02d %d/%d" % (t.tm_hour, t.tm_min, t[2], t[1]))
 				vfd.close()
 		self.startTimer(config.plugins.PermanentVfdClock.refreshrate.value)
 
@@ -82,6 +89,7 @@ class PermanentVfdClockMenu(Screen, ConfigListScreen):
 		self.list.append(getConfigListEntry(_("Show time only"), config.plugins.PermanentVfdClock.timeonly))
 		self.list.append(getConfigListEntry(_("VFD clock refresh interval time"), config.plugins.PermanentVfdClock.refreshrate))
 		self.list.append(getConfigListEntry(_("VFD clock holdoff time"), config.plugins.PermanentVfdClock.holdofftime))
+		self.list.append(getConfigListEntry(_("VFD clock displays the hour using two digits"), config.plugins.PermanentVfdClock.twodigits))
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
 
