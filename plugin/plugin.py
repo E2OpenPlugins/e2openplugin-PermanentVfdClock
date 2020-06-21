@@ -10,8 +10,8 @@ gTimer = ''
 config.plugins.PermanentVfdClock = ConfigSubsection()
 config.plugins.PermanentVfdClock.enabled = ConfigBoolean(default = False)
 config.plugins.PermanentVfdClock.timeonly = ConfigBoolean(default = False)
-config.plugins.PermanentVfdClock.refreshrate = ConfigInteger(default = 15, limits = (1,60))
-config.plugins.PermanentVfdClock.holdofftime = ConfigInteger(default = 5, limits = (1,60))
+config.plugins.PermanentVfdClock.refreshrate = ConfigInteger(default = 15, limits = (1, 60))
+config.plugins.PermanentVfdClock.holdofftime = ConfigInteger(default = 5, limits = (1, 60))
 
 VFD_PATH = '/dev/dbox/oled0'
 
@@ -113,4 +113,4 @@ def Plugins(**kwargs):
 	from os import path
 	if path.exists(VFD_PATH):
 		return [PluginDescriptor(where = [PluginDescriptor.WHERE_SESSIONSTART], fnc = autostart), \
-				PluginDescriptor(name = _("Permanent VFD Clock"), description = _("Show permanent clock in VFD"), where = PluginDescriptor.WHERE_PLUGINMENU, icon = "plugin.png",fnc = main) ]
+				PluginDescriptor(name = _("Permanent VFD Clock"), description = _("Show permanent clock in VFD"), where = PluginDescriptor.WHERE_PLUGINMENU, icon = "plugin.png", fnc = main) ]
