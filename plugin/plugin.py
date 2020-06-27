@@ -43,7 +43,7 @@ class PermanentVfdClock(Screen):
 				vfd = open(VFD_PATH, "w")
 				if config.plugins.PermanentVfdClock.timeonly.value is True:
 					if config.plugins.PermanentVfdClock.twodigits.value is True:
-						vfd.write("  %02d:%02d" % (t.tm_hour, t.tm_min))
+						vfd.write("   %02d:%02d" % (t.tm_hour, t.tm_min))
 					else:
 						vfd.write("   %2d:%02d" % (t.tm_hour, t.tm_min))
 				else:
