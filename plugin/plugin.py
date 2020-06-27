@@ -48,7 +48,7 @@ class PermanentVfdClock(Screen):
 						vfd.write("   %2d:%02d" % (t.tm_hour, t.tm_min))
 				else:
 					if config.plugins.PermanentVfdClock.twodigits.value is True:
-						vfd.write("%02d:%02d %d/%d" % (t.tm_hour, t.tm_min))
+						vfd.write("%02d:%02d %d/%d" % (t.tm_hour, t.tm_min, t[2], t[1]))
 					else:
 						vfd.write("%2d:%02d %d/%d" % (t.tm_hour, t.tm_min, t[2], t[1]))
 				vfd.close()
