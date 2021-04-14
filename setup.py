@@ -7,4 +7,3 @@ setup(name='enigma2-plugin-extensions-permanentvfdclock',
 	packages=[pkg],
 	package_dir={pkg: 'plugin'}
 )
-
