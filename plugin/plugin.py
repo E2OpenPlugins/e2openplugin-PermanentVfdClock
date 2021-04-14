@@ -112,5 +112,5 @@ def main(session, **kwargs):
 def Plugins(**kwargs):
 	from os import path
 	if path.exists(VFD_PATH):
-		return [PluginDescriptor(where = [PluginDescriptor.WHERE_SESSIONSTART], fnc = autostart), \
+		return [PluginDescriptor(where = [PluginDescriptor.WHERE_SESSIONSTART], fnc = autostart),
 				PluginDescriptor(name = _("Permanent VFD Clock"), description = _("Show permanent clock in VFD"), where = PluginDescriptor.WHERE_PLUGINMENU, icon = "plugin.png",fnc = main) ]
