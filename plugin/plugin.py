@@ -15,6 +15,7 @@ config.plugins.PermanentVfdClock.holdofftime = ConfigInteger(default=5, limits=(
 
 VFD_PATH = '/dev/dbox/oled0'
 
+
 class PermanentVfdClock(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
@@ -48,6 +49,7 @@ class PermanentVfdClock(Screen):
 
 	def serviceChanged(self):
 		self.startTimer(config.plugins.PermanentVfdClock.holdofftime.value)
+
 
 class PermanentVfdClockMenu(Screen, ConfigListScreen):
 	skin = """
@@ -107,6 +109,7 @@ def autostart(reason, **kwargs):
 
 def main(session, **kwargs):
 	session.open(PermanentVfdClockMenu)
+
 
 def Plugins(**kwargs):
 	from os import path
