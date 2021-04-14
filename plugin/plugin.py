@@ -8,10 +8,10 @@ from Screens.Screen import Screen
 gTimer = ''
 
 config.plugins.PermanentVfdClock = ConfigSubsection()
-config.plugins.PermanentVfdClock.enabled = ConfigBoolean(default = False)
-config.plugins.PermanentVfdClock.timeonly = ConfigBoolean(default = False)
-config.plugins.PermanentVfdClock.refreshrate = ConfigInteger(default = 15, limits = (1,60))
-config.plugins.PermanentVfdClock.holdofftime = ConfigInteger(default = 5, limits = (1,60))
+config.plugins.PermanentVfdClock.enabled = ConfigBoolean(default=False)
+config.plugins.PermanentVfdClock.timeonly = ConfigBoolean(default=False)
+config.plugins.PermanentVfdClock.refreshrate = ConfigInteger(default=15, limits=(1,60))
+config.plugins.PermanentVfdClock.holdofftime = ConfigInteger(default=5, limits=(1,60))
 
 VFD_PATH = '/dev/dbox/oled0'
 
@@ -20,8 +20,7 @@ class PermanentVfdClock(Screen):
 		Screen.__init__(self, session)
 		self.session = session
 		from Components.ServiceEventTracker import ServiceEventTracker
-		self.__event_tracker = ServiceEventTracker(screen = self, eventmap =
-		{
+		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
 			iPlayableService.evStart: self.serviceChanged,
 		})
 		global gTimer
@@ -77,7 +76,7 @@ class PermanentVfdClockMenu(Screen, ConfigListScreen):
 			"red": self.keyCancel,
 		}, -2)
 		self.list = []
-		ConfigListScreen.__init__(self, self.list, session = self.session)
+		ConfigListScreen.__init__(self, self.list, session=self.session)
 		self.list.append(getConfigListEntry(_("Activate permanent VFD clock"), config.plugins.PermanentVfdClock.enabled))
 		self.list.append(getConfigListEntry(_("Show time only"), config.plugins.PermanentVfdClock.timeonly))
 		self.list.append(getConfigListEntry(_("VFD clock refresh interval time"), config.plugins.PermanentVfdClock.refreshrate))
@@ -112,5 +111,5 @@ def main(session, **kwargs):
 def Plugins(**kwargs):
 	from os import path
 	if path.exists(VFD_PATH):
-		return [PluginDescriptor(where = [PluginDescriptor.WHERE_SESSIONSTART], fnc = autostart),
-				PluginDescriptor(name = _("Permanent VFD Clock"), description = _("Show permanent clock in VFD"), where = PluginDescriptor.WHERE_PLUGINMENU, icon = "plugin.png",fnc = main) ]
+		return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=autostart),
+				PluginDescriptor(name=_("Permanent VFD Clock"), description=_("Show permanent clock in VFD"), where=PluginDescriptor.WHERE_PLUGINMENU, icon="plugin.png",fnc=main) ]
