@@ -8,11 +8,11 @@ from Screens.Screen import Screen
 gTimer = ''
 
 config.plugins.PermanentVfdClock = ConfigSubsection()
-config.plugins.PermanentVfdClock.enabled = ConfigBoolean(default = False)
-config.plugins.PermanentVfdClock.timeonly = ConfigBoolean(default = False)
-config.plugins.PermanentVfdClock.refreshrate = ConfigInteger(default = 15, limits = (1,60))
-config.plugins.PermanentVfdClock.holdofftime = ConfigInteger(default = 5, limits = (1,60))
-config.plugins.PermanentVfdClock.twodigits = ConfigBoolean(default = False)
+config.plugins.PermanentVfdClock.enabled = ConfigBoolean(default=False)
+config.plugins.PermanentVfdClock.timeonly = ConfigBoolean(default=False)
+config.plugins.PermanentVfdClock.refreshrate = ConfigInteger(default=15, limits=(1,60))
+config.plugins.PermanentVfdClock.holdofftime = ConfigInteger(default=5, limits=(1,60))
+config.plugins.PermanentVfdClock.twodigits = ConfigBoolean(default=False)
 
 VFD_PATH = '/dev/dbox/oled0'
 
